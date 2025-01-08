@@ -1,7 +1,10 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+
+import {React,  useState } from 'react';
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const SignIn = () => {
+    const [isVisible , setIsvisible] = useState(false) ; 
   return (
     <div className='flex justify-center items-center h-full'>
 
@@ -18,9 +21,19 @@ const SignIn = () => {
 
 
             <div class="mb-6">
-                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <div className=' flex relative'>
+                                <input type={isVisible ? ("text") : ("password")}  id="password" name="password" placeholder="Enter your password"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "/>
+            
+                                    <div onClick = {() => isVisible ? setIsvisible(false) : setIsvisible(true)} className=' absolute right-2 top-3'>
+                                    {
+                                        isVisible ? (<FaRegEye />) : (<FaRegEyeSlash/>) 
+                                    }
+                                    </div>
+                                    
+            
+                            </div>
             </div>
 
 
