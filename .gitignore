@@ -1,0 +1,8 @@
+# Ignore the node modules
+node_modules/
+
+#ignore ds store
+.DS_Store
+
+#ignore the code editors folders
+.vscode/
