@@ -6,8 +6,8 @@ import Navbar from '../components/Navbar';
 
 const Home = () => {
     return (
-        <div className=' w-full'>
-            <Navbar/>
+        <div className=' w-full flex flex-col'>
+            
             <p className='text-3xl'>Latest</p>
             <CardsBlog/>
             <p>Blog by users</p>
