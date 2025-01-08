@@ -10,4 +10,28 @@ router.get('/',(req,res)=>{
 })
 
 
+const {newUserEntry} = require('../Controllers/newUserEntry');
+
+const {verifyUser} = require('../Controllers/verifyuser');
+
+const {createPost,getallPosts,getallUserNames,getUserPosts} = require('../Controllers/fetchdata');
+
+const {deletePost} = require('../Controllers/updateAndDeletePost');
+
+
+router.post('/newuser',newUserEntry);
+
+router.get('/auth',verifyUser);
+
+router.post('/create/post',createPost);
+
+router.get('/get/posts',getallPosts);
+
+router.get('/allusers',getallUserNames);
+
+router.get('/posts/:username',getUserPosts);
+
+router.get('/deletepost/:postid',deletePost);
+
+
 module.exports = router;
