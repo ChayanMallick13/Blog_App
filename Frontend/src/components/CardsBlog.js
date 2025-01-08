@@ -1,11 +1,11 @@
 import React from 'react'
 
 const CardsBlog = () => {
-  return (
+    return (
     <div>
-      
+        
     </div>
-  )
+    )
 }
 
 export default CardsBlog

@@ -1,17 +1,22 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
     <div className="h-screen bg-slate-500">
-      
+      <Navbar/>
       <Routes>
-        <Route path="/" elements={<Home/>} />
-        <Route path="/poetry" elements={<Home/>} />
-        <Route path="/literature" elements={<Home/>} />
-        <Route path="/story" elements={<Home/>} />
-        <Route path="/poems" elements={<Home/>} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/poetry" element={<Home/>} />
+        <Route path="/literature" element={<Home/>} />
+        <Route path="/story" element={<Home/>} />
+        <Route path="/poems" element={<Home/>} />
+        <Route path="/signin" element={<SignIn/>} />
+        <Route path="/signup" element={<SignUp/>} />
+
       </Routes>
     </div>
   );
