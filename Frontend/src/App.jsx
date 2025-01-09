@@ -16,7 +16,7 @@ const App = () => {
   } , [] ) ; 
 
   return (
-    <div className="h-screen bg-slate-300 relative">
+    <div className="bg-slate-300 h-[100vh] w-[100vw] overflow-x-hidden">
       <Navbar/>
 
       <Routes>

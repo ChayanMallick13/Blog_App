@@ -10,7 +10,7 @@ const Home = () => {
     const {loadingB , loadingU , blogs , users} = useContext(AppContext) ; 
 
     return (
-        <div className=' w-[96%] flex flex-col mx-auto mt-[2rem]'>
+        <div className=' w-[96%] mx-auto mt-[2rem]'>
             
             <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>Latest:</h1>
             {
@@ -18,8 +18,8 @@ const Home = () => {
                     <Spinner/>
                 ) : 
                 (
-                    blogs.length === 0 ? (<div>No post Available</div>) : 
-                    <div className='flex gap-10'>
+                    blogs.length === 0 ? (<div className='text-3xl'>No post Available</div>) : 
+                    <div className='flex gap-6 flex-wrap w-full justify-center'>
                     {
 
                     (blogs.map((blog) => (
@@ -34,7 +34,7 @@ const Home = () => {
                 
             }
 
-            <h1 className=' text-red-800'>Blog by users</h1>
+            <h1 className=' text-red-800 mt-14 text-3xl font-extrabold mb-10'>Blog by users:</h1>
 
             {
                 loadingU ? (
