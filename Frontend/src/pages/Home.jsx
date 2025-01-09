@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import CardsBlog from '../components/CardsBlog';
 import CardUser from '../components/CardUser';
 import CreateNew from '../components/CreateNew';
-import Navbar from '../components/Navbar';
 import { AppContext } from '../context/AppContext';
 import Spinner from '../components/Spinner';
 

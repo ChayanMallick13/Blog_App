@@ -9,9 +9,9 @@ const Navbar = () => {
 
   const navigate = useNavigate() ; 
   const [clicked , setClicked] = useState(false) ; 
-  const {isLoggedIn,setIsLoggedIn} = useContext(AppContext);
+  const {isLoggedIn} = useContext(AppContext);
 
-
+// eslint-disable-next-line 
   function clickHandler(){
     navigate("/") ; 
   }
@@ -46,9 +46,8 @@ const Navbar = () => {
             (
               <div className='flex gap-5 w-[20%] flex-col relative items-center '>
               <IoReorderThree onClick={navClickHandler} className="text-2xl" />
-                <div className='flex gap-5 absolute -right-5 top-8 flex-col bg-slate-700 w-[6rem] mt-2 text-center p-2
-                border-white border-2
-                '>
+                <div className='flex gap-5 absolute -right-5 top-7 flex-col bg-slate-700 w-[6rem] mt-2 text-center p-2
+                shadow-2xl'>
                   <NavLink to="/poetry">poetry</NavLink>
                   <NavLink to="/literature">literature</NavLink>
                   <NavLink to="/story">story</NavLink>
