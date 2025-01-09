@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { useContext, useEffect } from "react";
 import { AppContext } from "./context/AppContext";
+import Form from "./components/Form";
 
 const App = () => {
   const {fetchblogs , fetchUser} = useContext(AppContext) ; 
@@ -26,6 +27,8 @@ const App = () => {
         <Route path="/poems" element={<Home/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
+        <Route path="/createBlog" element={<Form/>} />
+        
       </Routes>
     </div>
   );

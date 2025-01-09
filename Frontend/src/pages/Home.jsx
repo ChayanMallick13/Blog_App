@@ -11,7 +11,7 @@ const Home = () => {
     const {loadingB , loadingU , blogs , users} = useContext(AppContext) ; 
 
     return (
-        <div className=' w-full flex flex-col'>
+        <div className=' w-full flex flex-col '>
             
             <h1 className=' text-red-800'>Latest</h1>
             {
@@ -54,7 +54,10 @@ const Home = () => {
                 ) 
                 
             }
-            <CreateNew/>
+            <div className=' fixed bottom-4 right-4'>
+
+                <CreateNew/>
+            </div>
         </div>
     )
 }
