@@ -6,7 +6,7 @@ const Post = require('../Models/Post');
 
 exports.createPost = async(req,res) => {
     try {
-        const {title,body,username} = req.body;
+        const {title,body,username,category} = req.body;
         const userdetails = await UserData.findOne({username:username});
         const name = userdetails.name;
         const date = new Date();
@@ -17,6 +17,7 @@ exports.createPost = async(req,res) => {
                 body:body,
                 user:name,
                 createdAt:cdate,
+                category:category,
                 username:username,
             }
         );
