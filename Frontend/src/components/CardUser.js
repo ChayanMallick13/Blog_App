@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
+import { NavLink } from 'react-router-dom';
 
 
 const CardUser = ({user}) => {
-  const {userPostHandler} = useContext(AppContext) ; 
+
   return (
-    <div onClick={userPostHandler}>
+    <NavLink to={`/userPost/${user.username}`}>
       <p>{user.username}</p>
       <p>{user.name}</p>
-    </div>
+    </NavLink>
   )
 }
 

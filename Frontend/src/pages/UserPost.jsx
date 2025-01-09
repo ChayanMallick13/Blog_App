@@ -5,12 +5,12 @@ import { AppContext } from '../context/AppContext';
 import Spinner from '../components/Spinner';
 
 const UserPost = () => {
-    const {loadingB  , blogs } = useContext(AppContext) ; 
+    const {loadingB  , blogs} = useContext(AppContext) ; 
 
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>Post: </h1>
+            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'> Post by  </h1>
             {
                 loadingB ? (
                     <Spinner/>
