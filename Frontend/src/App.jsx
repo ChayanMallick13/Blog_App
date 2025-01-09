@@ -15,11 +15,15 @@ import UserPost from "./pages/UserPost";
 import AllPost from "./pages/AllPost";
 
 const App = () => {
-  const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker} = useContext(AppContext) ; 
+  const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker,userPresentHandler} = useContext(AppContext) ; 
   
   useEffect (() => {
     fetchblogs() ; 
     fetchUser() ; 
+    const value = localStorage.getItem('userName');
+    if(value){
+      userPresentHandler(value);
+    }
     // eslint-disable-next-line
   } , [ApiValueChangeTracker,userschangeTracker] ) ; 
 

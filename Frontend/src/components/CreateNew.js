@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Form from './Form';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -12,6 +12,7 @@ const CreateNew = () => {
 
       isLoggedIn ? (navigate("/createBlog")) : (navigate("/signin")) ; 
     }
+
 
   return (
 

@@ -1,10 +1,23 @@
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
 
-    const {submitHandler} = useContext(AppContext) ;
+  const navigate = useNavigate();
+  const {submitHandler,isLoggedIn} = useContext(AppContext) ;
+  useEffect(
+    () => {
+      if(!isLoggedIn)
+         {
+          console.log('hello');
+          navigate('/');
+         }
+    },[]
+  )
+
+    
     return (
         <div className=' mt-10'>
 

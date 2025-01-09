@@ -89,6 +89,8 @@ function AppContextProvider({children}){
         if(matched){
             setIsLoggedIn(true);
             toast.success("login success") ; 
+            localStorage.setItem('userName',data.userName);
+            console.log("ff",localStorage.getItem('userName'));
             navigate("/");
             setCurrentUser(formData.get('username')) ; 
 
@@ -125,6 +127,7 @@ function AppContextProvider({children}){
                     toast.success('New User Resgistered');
                     setUCT(prev => !prev);
                     setCurrentUser(data.userName) ; 
+                    localStorage.setItem('userName',data.userName);
                     setIsLoggedIn(true);
                     navigate("/") ; 
                 }
@@ -192,6 +195,19 @@ function AppContextProvider({children}){
 
     }
 
+    function userPresentHandler(userName){
+        setCurrentUser(userName);
+        setIsLoggedIn(true);
+        navigate('/');
+    }
+
+    function signOutHandler(){
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+        localStorage.clear();
+        navigate('/');
+    }
+
 
     const value = {
         loadingB,
@@ -214,7 +230,9 @@ function AppContextProvider({children}){
         ApiValueChangeTracker,
         deletePost,
         showSignup,
-        userschangeTracker
+        userschangeTracker,
+        userPresentHandler,
+        signOutHandler
 
 
     } ;
