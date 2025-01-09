@@ -7,7 +7,7 @@ const AllPost = () => {
      const {loadingB  , blogs } = useContext(AppContext) ; 
   return (
         <div>
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>AllPost:</h1>
+            <h1 className=' text-slate-600 text-4xl mb-10 font-extrabold'>AllPost:</h1>
             {
                 loadingB ? (
                     <Spinner/>

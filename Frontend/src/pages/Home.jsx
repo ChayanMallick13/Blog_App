@@ -14,17 +14,18 @@ const Home = () => {
         <div className=' w-[96%] mx-auto mt-[2rem]'>
 
             
+
+
+
+            <div className='flex  gap-x-4'>
             <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>Latest:</h1>
-
-
-
-            <div className='flex gap-x-4'>
-                <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>Latest:</h1>
-                <NavLink to={'/allPost'}><button className="bg-green-500 text-sm text-white py-3 px-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:bg-green-600 hover:translate-y-1 focus:outline-none focus:ring-4 focus:ring-green-300 active:bg-green-700">
-                    View All
-                </button></NavLink>
+                <NavLink to={'/allPost'}><buttons class="relative inline-block px-4 py-2 font-medium group">
+                <span class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                <span class="absolute inset-0 w-full h-full bg-white border-2 border-slate-500 group-hover:bg-slate-700"></span>
+                <span class="relative text-black group-hover:text-white">viewAll</span>
+            </buttons></NavLink>
             </div>
-
+            
             {
                 loadingB ? (
                     <Spinner />
