@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>Latest:</h1>
+            <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>Latest:</h1>
             {
                 loadingB ? (
                     <Spinner/>
@@ -34,7 +34,7 @@ const Home = () => {
                 
             }
 
-            <h1 className=' text-red-800 mt-14 text-3xl font-extrabold mb-10'>Blog by users:</h1>
+            <h1 className=' text-gray-700 mt-14 text:xl md:text-3xl font-extrabold mb-10'>Blog by users:</h1>
 
             {
                 loadingU ? (

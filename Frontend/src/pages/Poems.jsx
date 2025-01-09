@@ -10,7 +10,7 @@ const Poems = () => {
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>Poems:</h1>
+            <h1 className=' ttext-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>Poems:</h1>
             {
                 loadingB ? (
                     <Spinner/>

@@ -18,7 +18,7 @@ const CreateNew = () => {
     <div>
 
 
-      <button onClick={clickHandler} className="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+      <button onClick={clickHandler} className="flex items-center justify-center w-12 h-12 bg-slate-600 text-white rounded-full hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-300">
           <span className="text-xl font-bold">+</span>
         </button>
       

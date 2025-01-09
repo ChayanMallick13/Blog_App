@@ -10,7 +10,7 @@ const Others = () => {
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'>Others:</h1>
+            <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>Others:</h1>
             {
                 loadingB ? (
                     <Spinner/>

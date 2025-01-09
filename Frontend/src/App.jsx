@@ -12,6 +12,7 @@ import Story from "./pages/Story";
 import Poems from "./pages/Poems";
 import Others from "./pages/Others";
 import UserPost from "./pages/UserPost";
+import AllPost from "./pages/AllPost";
 
 const App = () => {
   const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker} = useContext(AppContext) ; 
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/createBlog" element={<Form/>} />
+        <Route path="/allPost" element={<AllPost/>} />
         
       </Routes>
     </div>

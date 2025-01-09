@@ -11,14 +11,14 @@ const UserPost = () => {
     const user = location.pathname.split("/").at(-1);
 
     let Name = "" ; 
-    const Nameobj = users.filter(userr => userr.username == user ) ; 
+    const Nameobj = users.filter(userr => userr.username === user ) ; 
     if(Nameobj.length > 0 )
         Name = Nameobj[0].name ; 
 
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'> Post by {Name} </h1>
+            <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'> Post by {Name} </h1>
             {
                 loadingB ? (
                     <Spinner/>
