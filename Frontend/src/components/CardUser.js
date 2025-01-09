@@ -1,9 +1,10 @@
 import React from 'react'
 
-const CardUser = () => {
+const CardUser = ({user}) => {
   return (
     <div>
-      
+      <p>{user.username}</p>
+      <p>{user.name}</p>
     </div>
   )
 }

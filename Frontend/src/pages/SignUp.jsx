@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 const SignUp = () => {
 
     const [isVisible , setIsvisible] = useState(false) ; 
+    const {signUpHandler} = useContext(AppContext) ; 
 
 
   return (
     <div className='flex justify-center items-center h-full'>
 
 
-        <form class=" bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 w-full max-w-sm flex flex-col">
+        <form onSubmit={signUpHandler} class=" bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 w-full max-w-sm flex flex-col">
             <h2 class="text-2xl font-bold text-white text-center mb-6">Signup</h2>
 
 
@@ -46,7 +49,7 @@ const SignUp = () => {
 
 
             <div class="flex items-center justify-between mx-auto ">
-                <button type="submit "
+                <button 
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     SignUp
                 </button>
