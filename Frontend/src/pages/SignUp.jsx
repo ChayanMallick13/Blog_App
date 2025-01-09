@@ -9,6 +9,7 @@ const SignUp = () => {
 
     const [isVisible , setIsvisible] = useState(false) ; 
     const {signUpHandler , isLoggedIn} = useContext(AppContext) ; 
+    
     const navigate = useNavigate() ; 
 
     useEffect(() => {
@@ -63,6 +64,7 @@ return (
                     SignUp
                 </button>
             </div>
+
 
 
         </form>

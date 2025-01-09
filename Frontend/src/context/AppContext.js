@@ -14,6 +14,7 @@ function AppContextProvider({children}){
     const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
     const [currentUser , setCurrentUser] = useState(null) ; 
     const [ApiValueChangeTracker,setAVCT] = useState(true);
+    const [showSignup,setshowSignUp] = useState(false);
     const navigate = useNavigate() ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
@@ -92,8 +93,8 @@ function AppContextProvider({children}){
 
         }
         else{
-            toast.error("user not found sign up") ;
-            navigate("/signup") ; 
+            toast.error(jsondata?.message) ;
+            setshowSignUp(true);
         }
     }
 
@@ -114,22 +115,22 @@ function AppContextProvider({children}){
                 },
                 body: JSON.stringify(data),
                 });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                setIsLoggedIn(true);
                 const result = await response.json();
-                console.log(result);
+                if(result?.status===1){
+                    toast.error(result?.message);
+                }
+                else if(result?.status===2){
+                    setCurrentUser(formData.get('username')) ; 
+                    setIsLoggedIn(true);
+                    navigate("/") ; 
+                }
 
-                setCurrentUser(formData.get('username')) ; 
 
             } 
             catch (error) {
                 console.error('Error:', error);
-                toast.error("data not sent"); 
+                toast.error('Error Occurred'); 
             }
-
-        navigate("/") ; 
 
     }
     async function submitHandler(event) {
@@ -213,7 +214,8 @@ function AppContextProvider({children}){
         setCurrentUser,
         submitHandler,
         ApiValueChangeTracker,
-        deletePost
+        deletePost,
+        showSignup
 
 
     } ;

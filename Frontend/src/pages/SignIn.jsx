@@ -4,11 +4,11 @@ import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
     const [isVisible , setIsvisible] = useState(false) ; 
-    const {signinHandler , isLoggedIn} = useContext(AppContext) ; 
+    const {signinHandler , isLoggedIn,showSignup} = useContext(AppContext) ; 
     const navigate=  useNavigate() ; 
     
     useEffect(() => {
@@ -55,6 +55,12 @@ return (
                     Login
                 </button>
             </div>
+
+            {showSignup&&
+                <div className='text-lg text-center mt-5 text-red-600'>
+                    Not Registered? Register <NavLink to={'/signup'} className={'text-blue-300'}>here</NavLink>
+                </div>
+            }
         </form>
     </div>
 )
