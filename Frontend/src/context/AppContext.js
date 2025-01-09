@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext();
@@ -12,7 +13,7 @@ function AppContextProvider({children}){
     const [users , setUsers] = useState([] ) ;
     const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
     const [currentUser , setCurrentUser] = useState(null) ; 
-    const ApiValueChangeTracker = true;
+    const [ApiValueChangeTracker,setAVCT] = useState(true);
     const navigate = useNavigate() ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
@@ -30,7 +31,7 @@ function AppContextProvider({children}){
         }
         
         catch(err){
-            alert("Error In Fetch Blogs") ; 
+            toast.error("Error In Fetch Blogs") ; 
             setBlogs([]) ; 
             return ; 
         }
@@ -50,7 +51,7 @@ function AppContextProvider({children}){
         }
 
         catch(err){
-            alert("Error in Fetching users") ; 
+            toast.error("Error in Fetching users") ; 
             setUsers([]) ; 
 
             return ; 
@@ -85,13 +86,13 @@ function AppContextProvider({children}){
 
         if(matched){
             setIsLoggedIn(true);
-            alert("login success") ; 
+            toast.success("login success") ; 
             navigate("/");
             setCurrentUser(formData.get('username')) ; 
 
         }
         else{
-            alert("user not found sign up") ;
+            toast.error("user not found sign up") ;
             navigate("/signup") ; 
         }
     }
@@ -125,7 +126,7 @@ function AppContextProvider({children}){
             } 
             catch (error) {
                 console.error('Error:', error);
-                alert("data not sent"); 
+                toast.error("data not sent"); 
             }
 
         navigate("/") ; 
@@ -154,21 +155,40 @@ function AppContextProvider({children}){
                 }
                 const result = await response.json();
                 console.log(result);
-
-                setCurrentUser(data) ; 
+                setAVCT(prev => !prev);
+                toast.success('Post Added Successfully');
 
             } 
             catch (error) {
                 console.error('Error:', error);
-                alert("post not created "); 
+                toast.error("post not created "); 
             }
 
         navigate("/") ; 
 
     }
 
+<<<<<<< Updated upstream
     function userPostHandler() {
         navigate("/userPost"); 
+=======
+    async function deletePost(postid){
+        try{
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/deletepost/${postid}`);
+            const data = await response.json();
+            if(data?.success){
+                toast.success('Post Deleted');
+                setAVCT(prev => !prev);
+            }
+            else{
+                toast.error('Post Not deleetd');
+            }
+
+        }
+        catch(err){
+            toast.error('Problem in deleting Post');
+        }
+>>>>>>> Stashed changes
     }
 
 
@@ -191,7 +211,11 @@ function AppContextProvider({children}){
         setCurrentUser,
         submitHandler,
         ApiValueChangeTracker,
+<<<<<<< Updated upstream
         userPostHandler
+=======
+        deletePost
+>>>>>>> Stashed changes
     } ;
 
 
