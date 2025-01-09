@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { IoReorderThree } from "react-icons/io5";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -22,7 +22,8 @@ let Name = "" ;
 
   function navClickHandler() {
 
-    clicked ? (setClicked(false)) : setClicked(true) ; 
+    setClicked(prev => !prev);
+    
 
   }
 
@@ -61,8 +62,12 @@ let Name = "" ;
             (
               <div className='flex gap-5 w-[20%] flex-col relative items-center '>
               <IoReorderThree onClick={navClickHandler} className="text-2xl" />
-                <div className='flex gap-5 absolute z-10 -right-5 top-7 flex-col bg-slate-700 w-[6rem] mt-2 text-center p-2
-                shadow-2xl'>
+                <div className='flex gap-5 absolute z-10 -right-8 top-7 flex-col bg-slate-700 mt-2 text-center pb-6
+                shadow-2xl underline font-bold w-[120px]'
+                onClick={() => {
+                  setClicked(false);
+                }}
+                >
                   <NavLink to="/poetry">poetry</NavLink>
                   <NavLink to="/literature">literature</NavLink>
                   <NavLink to="/story">story</NavLink>
