@@ -9,11 +9,12 @@ const Navbar = () => {
 
   const navigate = useNavigate() ; 
   const [clicked , setClicked] = useState(false) ; 
+  
   // const [Name , setName] = useState("") ; 
   const {isLoggedIn , currentUser , users} = useContext(AppContext);
 
 let Name = "" ; 
-  const Nameobj = users.filter(user => user.username == currentUser ) ; 
+  const Nameobj = users.filter(user => user.username === currentUser ) ; 
   if(Nameobj.length > 0 )
     Name = Nameobj[0].name ; 
 
