@@ -54,6 +54,7 @@ const Form = () => {
                 <option value="literature">literature</option>
                 <option value="story">story </option>
                 <option value="poems">poems </option>
+                <option value="others">others</option>
               </select>
             </div>
 

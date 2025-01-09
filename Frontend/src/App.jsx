@@ -6,6 +6,9 @@ import SignUp from "./pages/SignUp";
 import { useContext, useEffect } from "react";
 import { AppContext } from "./context/AppContext";
 import Form from "./components/Form";
+import Poetry from "./pages/Poetry";
+import Literature from "./pages/Literature";
+import Story from "./pages/Story";
 
 const App = () => {
   const {fetchblogs , fetchUser,ApiValueChangeTracker} = useContext(AppContext) ; 
@@ -22,9 +25,9 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/poetry" element={<Home/>} />
-        <Route path="/literature" element={<Home/>} />
-        <Route path="/story" element={<Home/>} />
+        <Route path="/poetry" element={<Poetry/>} />
+        <Route path="/literature" element={<Literature/>} />
+        <Route path="/story" element={<Story/>} />
         <Route path="/poems" element={<Home/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
