@@ -3,10 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext();
 
-if(process.env.REACT_ENV !== 'production'){
-    require('dotenv').config();
-}
-
 
 
 function AppContextProvider({children}){
@@ -16,9 +12,9 @@ function AppContextProvider({children}){
     const [users , setUsers] = useState([] ) ;
     const navigate = useNavigate() ; 
 
-    const urlBlog = `http://127.0.0.1:${process.env.PORT}/api/v0.1/get/posts`;
-    const urlUser = `http://127.0.0.1:${process.env.PORT}/api/v0.1/allusers`;
-
+    const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
+    const urlUser = `${process.env.REACT_APP_BASE_URL}/allusers`;
+    console.log(process.env.REACT_APP_BASE_URL);
     async function fetchblogs() {
         setLoadingB(true) ; 
 
