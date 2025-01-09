@@ -12,6 +12,7 @@ function AppContextProvider({children}){
     const [users , setUsers] = useState([] ) ;
     const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
     const [currentUser , setCurrentUser] = useState(null) ; 
+    const ApiValueChangeTracker = true;
     const navigate = useNavigate() ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
@@ -184,7 +185,8 @@ function AppContextProvider({children}){
         isLoggedIn,
         currentUser,
         setCurrentUser,
-        submitHandler
+        submitHandler,
+        ApiValueChangeTracker
     } ;
 
 

@@ -8,12 +8,13 @@ import { AppContext } from "./context/AppContext";
 import Form from "./components/Form";
 
 const App = () => {
-  const {fetchblogs , fetchUser} = useContext(AppContext) ; 
+  const {fetchblogs , fetchUser,ApiValueChangeTracker} = useContext(AppContext) ; 
   
   useEffect (() => {
     fetchblogs() ; 
     fetchUser() ; 
-  } , [] ) ; 
+    // eslint-disable-next-line
+  } , [ApiValueChangeTracker] ) ; 
 
   return (
     <div className="bg-slate-300 h-[100vh] w-[100vw] overflow-x-hidden">
