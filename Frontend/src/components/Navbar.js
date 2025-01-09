@@ -24,12 +24,12 @@ const Navbar = () => {
     <div className=' flex justify-between items-center px-3 py-3 text-white bg-slate-700'>
 
       <div onClick={() => {navigate("/")}}  className=' flex gap-4 items-center'>
-        <img className=' w-8 h-8' src='https://imgs.search.brave.com/BRSDRIJdF4__H3JZut1mJTZChuZuBA5w7X_W36MGybI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/c2JyYW5kcy5jb20v/aW1nL2xiLnN2Zw'/>
+        <img className=' w-8 h-8' src='https://imgs.search.brave.com/BRSDRIJdF4__H3JZut1mJTZChuZuBA5w7X_W36MGybI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/c2JyYW5kcy5jb20v/aW1nL2xiLnN2Zw' alt='img'/>
         <p>Blog</p>
 
       </div>
 
-        <div className=' flex gap-5 items-center'>
+        <div className='flex gap-5 items-center w-[20%]'>
 
           {
             isLoggedIn ? 
@@ -43,17 +43,19 @@ const Navbar = () => {
           {
             clicked ? 
             (
-              <div className='flex gap-5'>
-                <div className='flex gap-5'>
+              <div className='flex gap-5 w-[20%] flex-col relative items-center '>
+              <IoReorderThree onClick={navClickHandler} className="text-2xl" />
+                <div className='flex gap-5 absolute -right-5 top-8 flex-col bg-slate-700 w-[6rem] mt-2 text-center p-2
+                border-white border-2
+                '>
                   <NavLink to="/poetry">poetry</NavLink>
                   <NavLink to="/literature">literature</NavLink>
                   <NavLink to="/story">story</NavLink>
                   <NavLink to="/poems">poems</NavLink>
                 </div>
-                <IoReorderThree onClick={navClickHandler} className="text-2xl" />
             </div>
             ) :
-            (<IoReorderThree onClick={navClickHandler} className="text-2xl" />) 
+            (<div className='flex gap-5 w-[20%] flex-col relative items-center'><IoReorderThree onClick={navClickHandler} className="text-2xl" /></div>) 
           }
         </div>
       
