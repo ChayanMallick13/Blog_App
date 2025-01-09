@@ -168,6 +168,11 @@ function AppContextProvider({children}){
 
     }
 
+
+
+    function userPostHandler() {
+        navigate("/userPost"); 
+    }
     async function deletePost(postid){
         try{
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/deletepost/${postid}`);
@@ -184,6 +189,8 @@ function AppContextProvider({children}){
         catch(err){
             toast.error('Problem in deleting Post');
         }
+
+
     }
 
 
@@ -207,6 +214,8 @@ function AppContextProvider({children}){
         submitHandler,
         ApiValueChangeTracker,
         deletePost
+
+
     } ;
 
 
