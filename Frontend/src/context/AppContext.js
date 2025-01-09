@@ -167,6 +167,10 @@ function AppContextProvider({children}){
 
     }
 
+    function userPostHandler() {
+        navigate("/userPost"); 
+    }
+
 
     const value = {
         loadingB,
@@ -186,7 +190,8 @@ function AppContextProvider({children}){
         currentUser,
         setCurrentUser,
         submitHandler,
-        ApiValueChangeTracker
+        ApiValueChangeTracker,
+        userPostHandler
     } ;
 
 

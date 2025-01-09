@@ -9,6 +9,9 @@ import Form from "./components/Form";
 import Poetry from "./pages/Poetry";
 import Literature from "./pages/Literature";
 import Story from "./pages/Story";
+import Poems from "./pages/Poems";
+import Others from "./pages/Others";
+import UserPost from "./pages/UserPost";
 
 const App = () => {
   const {fetchblogs , fetchUser,ApiValueChangeTracker} = useContext(AppContext) ; 
@@ -28,7 +31,9 @@ const App = () => {
         <Route path="/poetry" element={<Poetry/>} />
         <Route path="/literature" element={<Literature/>} />
         <Route path="/story" element={<Story/>} />
-        <Route path="/poems" element={<Home/>} />
+        <Route path="/poems" element={<Poems/>} />
+        <Route path="/others" element={<Others/>} />
+        <Route path="/userPost" element={<userPost/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/createBlog" element={<Form/>} />

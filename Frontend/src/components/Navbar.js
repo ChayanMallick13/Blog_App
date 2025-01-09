@@ -16,8 +16,7 @@ let Name = "" ;
   const Nameobj = users.filter(user => user.username == currentUser ) ; 
   if(Nameobj.length > 0 )
     Name = Nameobj[0].name ; 
-// console.log('Name');
-//   console.log(Nameobj)
+
 
 
   function navClickHandler() {
@@ -57,6 +56,7 @@ let Name = "" ;
                   <NavLink to="/literature">literature</NavLink>
                   <NavLink to="/story">story</NavLink>
                   <NavLink to="/poems">poems</NavLink>
+                  <NavLink to="/others">Others</NavLink>
                 </div>
             </div>
             ) :
