@@ -73,9 +73,9 @@ function AppContextProvider({children}){
         }
     }
 
-    function signUpHandler(event) {
+    async function signUpHandler(event) {
 
-        const sendPostRequest = async() => {
+        
 
             event.preventDefault();
             const formData = new FormData(event.target);
@@ -84,7 +84,7 @@ function AppContextProvider({children}){
                 username: formData.get('username'),
                 password: formData.get('password'),
             };
-
+console.log(data);
             try {
                 const response = await fetch('http://localhost:8000/api/v0.1/newuser', {
                     method: 'POST',
@@ -104,12 +104,9 @@ function AppContextProvider({children}){
                 console.error('Error:', error);
                 alert("data not sent"); 
             }
-        }
 
         navigate("/") ; 
 
-
-        
     }
 
 
@@ -125,7 +122,7 @@ function AppContextProvider({children}){
         users,
         setUsers,
         signinHandler,
-        signUpHandler
+        signUpHandler,
     } ;
 
 
