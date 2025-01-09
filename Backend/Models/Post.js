@@ -23,6 +23,11 @@ const PostSchema = new mongoose.Schema(
             required:true,
         },
 
+        category: {
+            type:String,
+            required:true,
+        },
+
         lastUpdated: {
             type:String,
         },
