@@ -10,7 +10,7 @@ const SignUp = () => {
     const {signUpHandler} = useContext(AppContext) ; 
 
 
-  return (
+return (
     <div className='flex justify-center items-center h-full'>
 
 
