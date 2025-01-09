@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
 
     const [isVisible , setIsvisible] = useState(false) ; 
-    const {signUpHandler} = useContext(AppContext) ; 
+    const {signUpHandler , isLoggedIn} = useContext(AppContext) ; 
+    const navigate = useNavigate() ; 
+
+    useEffect(() => {
+    
+            if(isLoggedIn){
+                navigate("/") ; 
+            }
+        }, [] ) ; 
 
 
 return (

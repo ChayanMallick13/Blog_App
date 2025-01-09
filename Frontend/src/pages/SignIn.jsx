@@ -1,15 +1,23 @@
 
-import {React,  useState } from 'react';
+import {React,  useEffect,  useState } from 'react';
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
     const [isVisible , setIsvisible] = useState(false) ; 
-    const {signinHandler} = useContext(AppContext) ; 
+    const {signinHandler , isLoggedIn} = useContext(AppContext) ; 
+    const navigate=  useNavigate() ; 
+    
+    useEffect(() => {
 
-  return (
+        if(isLoggedIn){
+            navigate("/") ; 
+        }
+    }, [] ) ; 
+return (
     <div className='flex justify-center items-center h-full '>
 
 
