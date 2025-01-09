@@ -11,6 +11,7 @@ function AppContextProvider({children}){
     const [blogs , setBlogs] = useState([] ) ;
     const [users , setUsers] = useState([] ) ;
     const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
+    const [currentUser , setCurrentUser] = useState(null) ; 
     const navigate = useNavigate() ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
@@ -84,7 +85,9 @@ function AppContextProvider({children}){
         if(matched){
             setIsLoggedIn(true);
             alert("login success") ; 
-            navigate("/")
+            navigate("/");
+            setCurrentUser(formData.get('username')) ; 
+
         }
         else{
             alert("user not found sign up") ;
@@ -93,9 +96,6 @@ function AppContextProvider({children}){
     }
 
     async function signUpHandler(event) {
-
-        
-
             event.preventDefault();
             const formData = new FormData(event.target);
             const data = {
@@ -119,10 +119,47 @@ function AppContextProvider({children}){
                 const result = await response.json();
                 console.log(result);
 
+                setCurrentUser(formData.get('username')) ; 
+
             } 
             catch (error) {
                 console.error('Error:', error);
                 alert("data not sent"); 
+            }
+
+        navigate("/") ; 
+
+    }
+    async function submitHandler(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                title: formData.get('title'),
+                body: formData.get('body'),
+                username: currentUser,
+                category: formData.get('category'),
+            };
+            try {
+                const apiurl = `${process.env.REACT_APP_BASE_URL}/create/post`;
+                const response = await fetch(apiurl, {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json();
+                console.log(result);
+
+                setCurrentUser(data) ; 
+
+            } 
+            catch (error) {
+                console.error('Error:', error);
+                alert("post not created "); 
             }
 
         navigate("/") ; 
@@ -145,6 +182,9 @@ function AppContextProvider({children}){
         signUpHandler,
         setIsLoggedIn,
         isLoggedIn,
+        currentUser,
+        setCurrentUser,
+        submitHandler
     } ;
 
 

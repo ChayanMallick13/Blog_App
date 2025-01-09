@@ -1,13 +1,16 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../context/AppContext';
 
 const Form = () => {
+
+    const {submitHandler} = useContext(AppContext) ;
     return (
         <div className=''>
 
         <div className="max-w-lg  mx-auto p-6 bg-white shadow-md rounded-lg flex flex-col justify-center">
           <h1 className="text-xl font-bold mb-4">Create a New Post</h1>
-          <form  className="space-y-4 h-[50%]">
+          <form onSubmit={submitHandler}  className="space-y-4 h-[50%]">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                 Title
