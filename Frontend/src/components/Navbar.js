@@ -9,12 +9,17 @@ const Navbar = () => {
 
   const navigate = useNavigate() ; 
   const [clicked , setClicked] = useState(false) ; 
-  const {isLoggedIn} = useContext(AppContext);
+  // const [Name , setName] = useState("") ; 
+  const {isLoggedIn , currentUser , users} = useContext(AppContext);
 
-// eslint-disable-next-line 
-  function clickHandler(){
-    navigate("/") ; 
-  }
+let Name = "" ; 
+  const Nameobj = users.filter(user => user.username == currentUser ) ; 
+  if(Nameobj.length > 0 )
+    Name = Nameobj[0].name ; 
+// console.log('Name');
+//   console.log(Nameobj)
+
+
   function navClickHandler() {
 
     clicked ? (setClicked(false)) : setClicked(true) ; 
@@ -34,7 +39,7 @@ const Navbar = () => {
 
           {
             isLoggedIn ? 
-            (<div>welcome!</div>) : 
+            (<div>welcome! <span>{Name}</span></div>) : 
             (<div className=' text-white flex gap-5'>
               <button onClick={() => {navigate("/signin")}} className=' outline p-2'>Sign in</button>
               <button onClick={() => {navigate("/signup")}} className=' outline p-2'>Sign up</button>
