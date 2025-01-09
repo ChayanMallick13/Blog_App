@@ -6,8 +6,9 @@ import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
-    <div className="h-screen bg-slate-500">
+    <div className="h-screen bg-slate-500 relative">
       <Navbar/>
+
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/poetry" element={<Home/>} />
@@ -16,7 +17,6 @@ const App = () => {
         <Route path="/poems" element={<Home/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
-
       </Routes>
     </div>
   );
