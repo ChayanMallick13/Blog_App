@@ -42,7 +42,7 @@ const Home = () => {
                 ) : 
                 (
                     users.length === 0 ? (<div>No user found</div>) : 
-                    <div className='flex gap-x-10'>
+                    <div className='grid grid-cols-4  gap-10'>
                         {
                             (users.map((user) => (
                                 <CardUser key= {user._id} user = {user} /> 

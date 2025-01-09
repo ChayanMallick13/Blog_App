@@ -6,14 +6,19 @@ import Spinner from '../components/Spinner';
 import { useLocation } from 'react-router-dom';
 
 const UserPost = () => {
-    const {loadingB  , blogs} = useContext(AppContext) ; 
+    const {loadingB  , blogs ,users} = useContext(AppContext) ; 
     const location = useLocation() ; 
     const user = location.pathname.split("/").at(-1);
+
+    let Name = "" ; 
+    const Nameobj = users.filter(userr => userr.username == user ) ; 
+    if(Nameobj.length > 0 )
+        Name = Nameobj[0].name ; 
 
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'> Post by {user} </h1>
+            <h1 className=' text-red-800 text-4xl mb-10 font-extrabold'> Post by {Name} </h1>
             {
                 loadingB ? (
                     <Spinner/>
