@@ -14,13 +14,13 @@ import Others from "./pages/Others";
 import UserPost from "./pages/UserPost";
 
 const App = () => {
-  const {fetchblogs , fetchUser,ApiValueChangeTracker} = useContext(AppContext) ; 
+  const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker} = useContext(AppContext) ; 
   
   useEffect (() => {
     fetchblogs() ; 
     fetchUser() ; 
     // eslint-disable-next-line
-  } , [ApiValueChangeTracker] ) ; 
+  } , [ApiValueChangeTracker,userschangeTracker] ) ; 
 
   return (
     <div className="bg-slate-300 h-[100vh] w-[100vw] overflow-x-hidden">

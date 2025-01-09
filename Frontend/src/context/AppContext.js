@@ -11,8 +11,9 @@ function AppContextProvider({children}){
     const [loadingU , setLoadingU] = useState(false) ;
     const [blogs , setBlogs] = useState([] ) ;
     const [users , setUsers] = useState([] ) ;
+    const [userschangeTracker,setUCT] = useState(false);
     const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
-    const [currentUser , setCurrentUser] = useState(null) ; 
+    const [currentUser , setCurrentUser] = useState('hh') ; 
     const [ApiValueChangeTracker,setAVCT] = useState(true);
     const [showSignup,setshowSignUp] = useState(false);
     const navigate = useNavigate() ; 
@@ -101,6 +102,7 @@ function AppContextProvider({children}){
     async function signUpHandler(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
+
             const data = {
                 Name: formData.get('name'),
                 userName: formData.get('username'),
@@ -120,7 +122,9 @@ function AppContextProvider({children}){
                     toast.error(result?.message);
                 }
                 else if(result?.status===2){
-                    setCurrentUser(formData.get('username')) ; 
+                    toast.success('New User Resgistered');
+                    setUCT(prev => !prev);
+                    setCurrentUser(data.userName) ; 
                     setIsLoggedIn(true);
                     navigate("/") ; 
                 }
@@ -154,8 +158,6 @@ function AppContextProvider({children}){
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const result = await response.json();
-                console.log(result);
                 setAVCT(prev => !prev);
                 toast.success('Post Added Successfully');
 
@@ -170,10 +172,6 @@ function AppContextProvider({children}){
     }
 
 
-
-    function userPostHandler() {
-        navigate("/userPost"); 
-    }
     async function deletePost(postid){
         try{
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/deletepost/${postid}`);
@@ -215,7 +213,8 @@ function AppContextProvider({children}){
         submitHandler,
         ApiValueChangeTracker,
         deletePost,
-        showSignup
+        showSignup,
+        userschangeTracker
 
 
     } ;
