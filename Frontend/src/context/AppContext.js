@@ -10,6 +10,7 @@ function AppContextProvider({children}){
     const [loadingU , setLoadingU] = useState(false) ;
     const [blogs , setBlogs] = useState([] ) ;
     const [users , setUsers] = useState([] ) ;
+    const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
     const navigate = useNavigate() ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
@@ -55,17 +56,33 @@ function AppContextProvider({children}){
         setLoadingU(false) ; 
     }
 
-    function signinHandler(event) {
+    async function signinHandler(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = {
-            username: formData.get('username'),
-            password: formData.get('password'),
+            userName: formData.get('username'),
+            Password: formData.get('password'),
         };
 
-        const matched = users.some(user => user.username === data.username && user.password === data.password ) ; 
+        const apires = await fetch(`${process.env.REACT_APP_BASE_URL}/auth`,{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(
+                {
+                    userName:data.userName,
+                    Password:data.Password,
+                }
+            )
+        });
+
+        const jsondata = await apires.json();
+
+        const matched = jsondata?.verified;
 
         if(matched){
+            setIsLoggedIn(true);
             alert("login success") ; 
             navigate("/")
         }
@@ -82,13 +99,13 @@ function AppContextProvider({children}){
             event.preventDefault();
             const formData = new FormData(event.target);
             const data = {
-                name: formData.get('name'),
-                username: formData.get('username'),
-                password: formData.get('password'),
+                Name: formData.get('name'),
+                userName: formData.get('username'),
+                Password: formData.get('password'),
             };
-console.log(data);
             try {
-                const response = await fetch('http://localhost:8000/api/v0.1/newuser', {
+                const apiurl = `${process.env.REACT_APP_BASE_URL}/newuser`;
+                const response = await fetch(apiurl, {
                     method: 'POST',
                     headers: {
                     'Content-Type': 'application/json',
@@ -98,8 +115,9 @@ console.log(data);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
+                setIsLoggedIn(true);
                 const result = await response.json();
+                console.log(result);
 
             } 
             catch (error) {
@@ -125,6 +143,8 @@ console.log(data);
         setUsers,
         signinHandler,
         signUpHandler,
+        setIsLoggedIn,
+        isLoggedIn,
     } ;
 
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoReorderThree } from "react-icons/io5";
 import { NavLink, useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 
 
@@ -8,7 +9,7 @@ const Navbar = () => {
 
   const navigate = useNavigate() ; 
   const [clicked , setClicked] = useState(false) ; 
-  const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
+  const {isLoggedIn,setIsLoggedIn} = useContext(AppContext);
 
 
   function clickHandler(){

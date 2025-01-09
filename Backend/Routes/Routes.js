@@ -22,7 +22,7 @@ const {deletePost} = require('../Controllers/updateAndDeletePost');
 
 router.post('/newuser',newUserEntry);
 
-router.get('/auth',verifyUser);
+router.post('/auth',verifyUser);
 
 router.post('/create/post',createPost);
 
