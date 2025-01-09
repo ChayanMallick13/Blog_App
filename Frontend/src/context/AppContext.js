@@ -168,10 +168,6 @@ function AppContextProvider({children}){
 
     }
 
-<<<<<<< Updated upstream
-    function userPostHandler() {
-        navigate("/userPost"); 
-=======
     async function deletePost(postid){
         try{
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/deletepost/${postid}`);
@@ -188,7 +184,6 @@ function AppContextProvider({children}){
         catch(err){
             toast.error('Problem in deleting Post');
         }
->>>>>>> Stashed changes
     }
 
 
@@ -211,18 +206,13 @@ function AppContextProvider({children}){
         setCurrentUser,
         submitHandler,
         ApiValueChangeTracker,
-<<<<<<< Updated upstream
-        userPostHandler
-=======
         deletePost
->>>>>>> Stashed changes
     } ;
 
 
     return <AppContext.Provider value={value}>
         {children} 
     </AppContext.Provider>
-
 
 }
 
