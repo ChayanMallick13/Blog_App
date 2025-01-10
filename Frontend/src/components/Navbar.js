@@ -70,7 +70,6 @@ const Navbar = () => {
                   }}
                 >
 
-                
                   <NavLink to={`category/${category[0]}`}>{category[0]}</NavLink>
                   <NavLink to={`category/${category[1]}`}>{category[1]}</NavLink>
                   <NavLink to={`category/${category[2]}`}>{category[2]}</NavLink>
