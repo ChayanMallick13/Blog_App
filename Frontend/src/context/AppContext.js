@@ -204,6 +204,7 @@ function AppContextProvider({children}){
     function signOutHandler(){
         setIsLoggedIn(false);
         setCurrentUser(null);
+        toast.success('Logged Out');
         localStorage.clear();
         navigate('/');
     }
