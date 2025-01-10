@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
 
 
@@ -7,7 +6,9 @@ const CardUser = ({user}) => {
 
   return (
     <NavLink to={`/userPost/${user.username}`}>
-    <div className=" max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md border border-gray-200">
+    <div className="h-[200px] w-[300px] max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md border-4 border-gray-200
+    hover:border-blue-300 transition-all duration-200 flex flex-col justify-around items-center hover:shadow-md
+    ">
       <div className="mb-4">
         <h2 className="text-xl font-semibold text-gray-800">{user.name}</h2>
         <p className="text-gray-600">{user.username}</p>

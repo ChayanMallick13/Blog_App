@@ -13,36 +13,39 @@ import Footer from "./components/Footer";
 import ShowPost from "./pages/ShowPost";
 
 const App = () => {
-  const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker,userPresentHandler} = useContext(AppContext) ; 
-  
-  useEffect (() => {
-    fetchblogs() ; 
-    fetchUser() ; 
+  const { fetchblogs, fetchUser, ApiValueChangeTracker, userschangeTracker, userPresentHandler } = useContext(AppContext);
+
+  useEffect(() => {
+    fetchblogs();
+    fetchUser();
     const value = localStorage.getItem('userName');
-    if(value){
+    if (value) {
       userPresentHandler(value);
     }
     // eslint-disable-next-line
-  } , [ApiValueChangeTracker,userschangeTracker] ) ; 
+  }, [ApiValueChangeTracker, userschangeTracker]);
 
   return (
-    <div className="bg-slate-300 h-[100vh] w-[100vw] overflow-x-hidden relative">
-      <Navbar/>
+    <div className="bg-slate-300 min-h-[100vh] overflow-x-hidden flex flex-col justify-between">
 
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/category/:category" element={<Category/>} />
-        <Route path="/showPost/:id" element={<ShowPost/>} />
 
-        <Route path="/userPost/:username" element={<UserPost/>} />
-        <Route path="/signin" element={<SignIn/>} />
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/createBlog" element={<Form/>} />
-        <Route path="/allPost" element={<AllPost/>} />
-        
-      </Routes>
+      <div className="h-full flex flex-col justify-between">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:category" element={<Category />} />
+          <Route path="/showPost/:id" element={<ShowPost />} />
 
-      <Footer className='absolute bottom-0'/>
+          <Route path="/userPost/:username" element={<UserPost />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/createBlog" element={<Form />} />
+          <Route path="/allPost" element={<AllPost />} />
+
+        </Routes>
+      </div>
+
+      <Footer />
     </div>
   );
 };

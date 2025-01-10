@@ -14,12 +14,13 @@ const Form = () => {
           console.log('hello');
           navigate('/');
          }
+         // eslint-disable-next-line
     },[]
   )
 
     
     return (
-        <div className=' mt-10'>
+        <div className=' mt-28'>
 
         <div className="max-w-lg  mx-auto p-6 bg-white shadow-md rounded-lg flex flex-col justify-center">
           <h1 className="text-xl font-bold mb-4">Create a New Post</h1>

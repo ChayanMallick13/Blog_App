@@ -30,7 +30,7 @@ function AppContextProvider({children}){
             const data = await result.json() ; 
 
             // set blogs here after from fetching from api 
-            setBlogs(data.posts) ; 
+            setBlogs(data.posts.reverse()) ; 
         }
         
         catch(err){

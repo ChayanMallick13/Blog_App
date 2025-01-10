@@ -32,10 +32,10 @@ const Home = () => {
                 ) :
                     (
                         blogs.length === 0 ? (<div className='text-3xl'>No post Available</div>) :
-                            <div className='flex gap-6 flex-wrap w-full justify-center'>
+                            <div className='flex gap-9 flex-wrap w-full justify-center'>
                                 {
 
-                                    (blogs.slice(-6).reverse().map((blog) => (
+                                    (blogs.slice(0,6).map((blog) => (
 
 
                                         <CardsBlog key={blog._id} blog={blog} />
@@ -55,7 +55,7 @@ const Home = () => {
                 ) :
                     (
                         users.length === 0 ? (<div>No user found</div>) :
-                            <div className='grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-10 mb-8'>
+                            <div className='flex flex-wrap justify-center gap-10 mb-8'>
                                 {
                                     (users.map((user) => (
                                         <CardUser key={user._id} user={user} />

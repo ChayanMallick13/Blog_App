@@ -16,9 +16,10 @@ const SignIn = () => {
         if(isLoggedIn){
             navigate("/") ; 
         }
+        // eslint-disable-next-line
     }, [] ) ; 
 return (
-    <div className='flex justify-center items-center h-full '>
+    <div className='flex justify-center items-center h-full mt-48'>
 
 
         <form onSubmit={signinHandler} className=" bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 w-full max-w-sm flex flex-col">

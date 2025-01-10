@@ -17,7 +17,7 @@ const AllPost = () => {
                     <div className='flex gap-6 flex-wrap w-full justify-center'>
                     {
 
-                    (blogs.reverse().map((blog) => (
+                    (blogs.map((blog) => (
 
 
                             <CardsBlog key= {blog._id} blog = {blog} /> 

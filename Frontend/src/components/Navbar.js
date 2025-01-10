@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const [clicked, setClicked] = useState(false);
-  const category = ["poetry" , "literature" ,"story" ,"poems" , "Others"] ; 
+  const category = ["poetry" , "literature" ,"story" ,"poems" , "others"] ; 
 
   // const [Name , setName] = useState("") ; 
   const { isLoggedIn, currentUser, users, signOutHandler } = useContext(AppContext);
@@ -29,19 +29,20 @@ const Navbar = () => {
   }
 
   return (
-    <div className=' flex w-full justify-between items-center px-3 py-3 text-white bg-slate-700'>
+    <div className=' flex w-full justify-between items-center md:px-12 px-1 py-6 text-white bg-slate-700
+    '>
 
-      <div onClick={() => { navigate("/") }} className=' flex gap-4 items-center'>
+      <div onClick={() => { navigate("/") }} className=' flex gap-4 items-center text-xl font-extrabold'>
         <img className=' w-8 h-8' src='https://imgs.search.brave.com/BRSDRIJdF4__H3JZut1mJTZChuZuBA5w7X_W36MGybI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/c2JyYW5kcy5jb20v/aW1nL2xiLnN2Zw' alt='img' />
         <p>Blog</p>
 
       </div>
 
-      <div className='flex justify-between items-center w-[300px] px-5'>
+      <div className='flex justify-between items-center md:w-[350px]'>
 
         {
           isLoggedIn ?
-            (<div>welcome! <span>{Name}</span></div>) :
+            (<div className='w-[99%]'>welcome! <span className='italic font-extrabold md:text-xl'>{Name}</span></div>) :
             (<div className=' text-white flex gap-5'>
               <button onClick={() => { navigate("/signin") }} class="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
                 <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
@@ -82,6 +83,7 @@ const Navbar = () => {
                       onClick={() => {
                         signOutHandler();
                       }}
+                      className='cursor-pointer'
                     >Sign Out</p>
                   }
                 </div>
