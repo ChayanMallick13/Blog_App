@@ -11,7 +11,6 @@ const Form = () => {
     () => {
       if(!isLoggedIn)
          {
-          console.log('hello');
           navigate('/');
          }
          // eslint-disable-next-line

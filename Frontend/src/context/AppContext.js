@@ -21,7 +21,9 @@ function AppContextProvider({children}){
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
     const urlUser = `${process.env.REACT_APP_BASE_URL}/allusers`;
+
     
+
     async function fetchblogs() {
         setLoadingB(true) ; 
 
@@ -36,7 +38,6 @@ function AppContextProvider({children}){
         catch(err){
             toast.error("Error In Fetch Blogs") ; 
             setBlogs([]) ; 
-            return ; 
         }
         
         setLoadingB(false) ; 
@@ -57,7 +58,6 @@ function AppContextProvider({children}){
             toast.error("Error in Fetching users") ; 
             setUsers([]) ; 
 
-            return ; 
         }
         setLoadingU(false) ; 
     }
@@ -91,7 +91,6 @@ function AppContextProvider({children}){
             setIsLoggedIn(true);
             toast.success("login success") ; 
             localStorage.setItem('userName',data.userName);
-            console.log("ff",localStorage.getItem('userName'));
             navigate("/");
             setCurrentUser(formData.get('username')) ; 
 
