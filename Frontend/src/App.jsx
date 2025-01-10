@@ -6,13 +6,9 @@ import SignUp from "./pages/SignUp";
 import { useContext, useEffect } from "react";
 import { AppContext } from "./context/AppContext";
 import Form from "./components/Form";
-import Poetry from "./pages/Poetry";
-import Literature from "./pages/Literature";
-import Story from "./pages/Story";
-import Poems from "./pages/Poems";
-import Others from "./pages/Others";
 import UserPost from "./pages/UserPost";
 import AllPost from "./pages/AllPost";
+import Category from "./pages/Category";
 
 const App = () => {
   const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker,userPresentHandler} = useContext(AppContext) ; 
@@ -33,11 +29,8 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/poetry" element={<Poetry/>} />
-        <Route path="/literature" element={<Literature/>} />
-        <Route path="/story" element={<Story/>} />
-        <Route path="/poems" element={<Poems/>} />
-        <Route path="/others" element={<Others/>} />
+        <Route path="/category/:category" element={<Category/>} />
+
         <Route path="/userPost/:username" element={<UserPost/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />

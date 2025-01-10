@@ -1,17 +1,19 @@
 import React, { useContext } from 'react'
 import CardsBlog from '../components/CardsBlog';
-import CardUser from '../components/CardUser';
 import CreateNew from '../components/CreateNew';
 import { AppContext } from '../context/AppContext';
 import Spinner from '../components/Spinner';
+import { useLocation } from 'react-router-dom';
 
-const Poetry = () => {
+const Category = () => {
     const {loadingB  , blogs } = useContext(AppContext) ; 
+    const location = useLocation() ; 
+    const categ = location.pathname.split("/").at(-1);
 
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
             
-            <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>Poetry:</h1>
+            <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>{categ}</h1>
             {
                 loadingB ? (
                     <Spinner/>
@@ -21,7 +23,7 @@ const Poetry = () => {
                     <div className='flex gap-6 flex-wrap w-full justify-center'>
                     {
 
-                        blogs.filter(blog => blog.category === "poetry").map(blog => 
+                        blogs.filter(blog => blog.category === categ ).map(blog => 
                             (<CardsBlog key= {blog._id} blog = {blog} /> ) 
                         )
                     }
@@ -41,4 +43,4 @@ const Poetry = () => {
     )
 }
 
-export default Poetry
+export default Category

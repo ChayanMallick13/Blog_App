@@ -9,6 +9,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const [clicked, setClicked] = useState(false);
+  const category = ["poetry" , "literature" ,"story" ,"poems" , "Others"] ; 
 
   // const [Name , setName] = useState("") ; 
   const { isLoggedIn, currentUser, users, signOutHandler } = useContext(AppContext);
@@ -68,11 +69,15 @@ const Navbar = () => {
                     setClicked(false);
                   }}
                 >
-                  <NavLink to="/poetry">poetry</NavLink>
-                  <NavLink to="/literature">literature</NavLink>
-                  <NavLink to="/story">story</NavLink>
-                  <NavLink to="/poems">poems</NavLink>
-                  <NavLink to="/others">Others</NavLink>
+
+                
+                  <NavLink to={`category/${category[0]}`}>{category[0]}</NavLink>
+                  <NavLink to={`category/${category[1]}`}>{category[1]}</NavLink>
+                  <NavLink to={`category/${category[2]}`}>{category[2]}</NavLink>
+                  <NavLink to={`category/${category[3]}`}>{category[3]}</NavLink>
+                  <NavLink to={`category/${category[4]}`}>{category[4]}</NavLink>
+
+
                   {isLoggedIn &&
                     <p
                       onClick={() => {
