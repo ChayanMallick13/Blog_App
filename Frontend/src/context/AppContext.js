@@ -21,7 +21,7 @@ function AppContextProvider({children}){
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
     const urlUser = `${process.env.REACT_APP_BASE_URL}/allusers`;
-    console.log(process.env.REACT_APP_BASE_URL);
+    
     async function fetchblogs() {
         setLoadingB(true) ; 
 

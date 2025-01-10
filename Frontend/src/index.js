@@ -11,13 +11,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 
   <BrowserRouter>
-  <AppContextProvider>
+    <AppContextProvider>
 
-    <App />
+      <App />
 
-    <Toaster/>
-    
-  </AppContextProvider>
+      <Toaster/>
+      
+    </AppContextProvider>
   </BrowserRouter>
 
 );
