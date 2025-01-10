@@ -26,7 +26,7 @@ const App = () => {
   } , [ApiValueChangeTracker,userschangeTracker] ) ; 
 
   return (
-    <div className="bg-slate-300 h-[100vh] w-[100vw] overflow-x-hidden">
+    <div className="bg-slate-300 h-[100vh] w-[100vw] overflow-x-hidden relative">
       <Navbar/>
 
       <Routes>
@@ -42,7 +42,7 @@ const App = () => {
         
       </Routes>
 
-      <Footer/>
+      <Footer className='absolute bottom-0'/>
     </div>
   );
 };
