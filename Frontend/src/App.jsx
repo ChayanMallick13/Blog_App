@@ -9,6 +9,7 @@ import Form from "./components/Form";
 import UserPost from "./pages/UserPost";
 import AllPost from "./pages/AllPost";
 import Category from "./pages/Category";
+import Footer from "./components/Footer";
 
 const App = () => {
   const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker,userPresentHandler} = useContext(AppContext) ; 
@@ -38,6 +39,8 @@ const App = () => {
         <Route path="/allPost" element={<AllPost/>} />
         
       </Routes>
+
+      <Footer/>
     </div>
   );
 };
