@@ -11,6 +11,8 @@ const Category = () => {
     const categ = location.pathname.split("/").at(-1);
     const navigate = useNavigate();
 
+    const filtered_blogs = blogs.filter(blog => blog.category === categ);
+
     return (
         <div className=' w-[96%] mx-auto relative'>
             <button class="group mt-4 relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full 
@@ -48,16 +50,16 @@ bg-neutral-950 py-1 pl-6 pr-14 font-medium text-neutral-50 ml-3
                     <Spinner />
                 ) :
                     (
-                        blogs.length === 0 ? (<div className='text-3xl'>No post Available</div>) :
-                            <div className='flex gap-6 flex-wrap w-full justify-center'>
+                        filtered_blogs.length === 0 ? (<div className='text-3xl font-bold'>No posts Available</div>) :
+                           ( <div className='flex gap-6 flex-wrap w-full justify-center'>
                                 {
 
-                                    blogs.filter(blog => blog.category === categ).map(blog =>
+                                    filtered_blogs.map(blog =>
                                         (<CardsBlog key={blog._id} blog={blog} />)
                                     )
                                 }
 
-                            </div>
+                            </div>)
                     )
 
             }
