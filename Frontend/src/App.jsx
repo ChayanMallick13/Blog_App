@@ -10,6 +10,7 @@ import UserPost from "./pages/UserPost";
 import AllPost from "./pages/AllPost";
 import Category from "./pages/Category";
 import Footer from "./components/Footer";
+import ShowPost from "./pages/ShowPost";
 
 const App = () => {
   const {fetchblogs , fetchUser,ApiValueChangeTracker,userschangeTracker,userPresentHandler} = useContext(AppContext) ; 
@@ -31,6 +32,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/category/:category" element={<Category/>} />
+        <Route path="/showPost/:id" element={<ShowPost/>} />
 
         <Route path="/userPost/:username" element={<UserPost/>} />
         <Route path="/signin" element={<SignIn/>} />

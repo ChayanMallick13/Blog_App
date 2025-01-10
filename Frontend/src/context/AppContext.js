@@ -16,6 +16,7 @@ function AppContextProvider({children}){
     const [currentUser , setCurrentUser] = useState('hh') ; 
     const [ApiValueChangeTracker,setAVCT] = useState(true);
     const [showSignup,setshowSignUp] = useState(false);
+    
     const navigate = useNavigate() ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
@@ -207,6 +208,8 @@ function AppContextProvider({children}){
         localStorage.clear();
         navigate('/');
     }
+
+    
 
 
     const value = {

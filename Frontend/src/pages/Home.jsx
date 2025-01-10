@@ -55,7 +55,7 @@ const Home = () => {
                 ) :
                     (
                         users.length === 0 ? (<div>No user found</div>) :
-                            <div className='grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-10'>
+                            <div className='grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-10 mb-8'>
                                 {
                                     (users.map((user) => (
                                         <CardUser key={user._id} user={user} />
@@ -66,7 +66,7 @@ const Home = () => {
                     )
 
             }
-            <div className=' fixed bottom-4 right-4'>
+            <div className=' fixed bottom-4 right-4 '>
 
                 <CreateNew />
             </div>
