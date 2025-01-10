@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 const Home = () => {
 
-    const { loadingB, loadingU, blogs, users } = useContext(AppContext);
+    const { loadingB, loadingU, blogs, users , currentUser } = useContext(AppContext);
 
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
@@ -57,10 +57,12 @@ const Home = () => {
                         users.length === 0 ? (<div>No user found</div>) :
                             <div className='flex flex-wrap justify-center gap-10 mb-8'>
                                 {
-                                    (users.map((user) => (
-                                        <CardUser key={user._id} user={user} />
-                                    )))
+                                    users.filter(user => user.username === currentUser).map(user => <CardUser key={user._id} user={user}  c_user = {currentUser} />)
+                                
+                                }
+                                {
 
+                                    users.filter(user => user.username !== currentUser).map(user => <CardUser key={user._id} user={user} c_user ="" />)
                                 }
                             </div>
                     )
