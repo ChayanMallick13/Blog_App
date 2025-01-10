@@ -27,14 +27,14 @@ return (
 
 
             <div className="mb-4">
-                <label for="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
             </div>
 
 
             <div className="mb-6">
-                <label for="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
                 <div className=' flex relative'>
                     <input type={isVisible ? ("text") : ("password")}  id="password" name="password" placeholder="Enter your password"
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "/>
