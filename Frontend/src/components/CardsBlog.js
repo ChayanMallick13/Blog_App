@@ -4,6 +4,7 @@ import { FaTrashCan } from "react-icons/fa6";
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { FaCopy } from "react-icons/fa";
+import toast from 'react-hot-toast';
 
 const CardsBlog = ({ blog }) => {
     const { currentUser, deletePost } = useContext(AppContext);
@@ -16,17 +17,25 @@ const CardsBlog = ({ blog }) => {
     }
 
     function copyHandler(){
-        
+        navigator.clipboard.writeText(blog.body).then(
+            () => {
+                toast.success('Blog Copied');
+            }
+        ).catch(
+            (err) => {
+                toast.error('Error In Copying');
+            }
+        )
     }
 
     return (
 
 
-        <div className='relative hover:scale-110 transition-all duration-500'>
+        <div className='relative hover:scale-110 transition-all duration-500 group'>
 
             <div onClick={() => naviagte(`/showPost/${blog._id}`)} className='flex flex-col gap-y-12 bg-white px-4 py-4 md:w-[380px] w-[373px] text-center rounded-md shadow-black
             shadow-lg drop-shadow-lg card-back relative group border-slate-700
-            border-2 flex-wrap cursor-pointer h-[450px] justify-around
+            border-2 flex-wrap cursor-pointer h-[470px] justify-around 
             '>
 
                 <img alt='border' loading='lazy' src={border} className='absolute h-[90%] opacity-0 left-0 top-0
@@ -47,8 +56,8 @@ const CardsBlog = ({ blog }) => {
 
             </div>
 
-            <div className={`absolute right-9 top-1 text-2xl text-red-700 ${(displayCan) ? ('opacity-100') : ('opacity-0')} 
-                cursor-pointer
+            <div className={`absolute right-9 top-1 text-2xl text-red-700 ${(displayCan) ? ('group-hover:opacity-100 transition-all duration-300') : ('')} 
+                cursor-pointer opacity-0
                 `}
                 onClick={clickHandler}
             >
@@ -56,9 +65,9 @@ const CardsBlog = ({ blog }) => {
             </div>
 
             <div className={`absolute right-2 top-1 text-2xl text-green-900
-                cursor-pointer
+                cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300
                 `}
-                
+                onClick={copyHandler}
                 >
                 <FaCopy />
             </div>
