@@ -30,7 +30,7 @@ const Home = () => {
                     <Spinner />
                 ) :
                     (
-                        blogs.length === 0 ? (<div className='text-3xl'>No posts Available</div>) :
+                        (blogs.length === 0) ? (<div className='text-3xl'>No posts Available</div>) :
                             <div className='flex  gap-9 flex-wrap w-full justify-center'>
                                 {
 
