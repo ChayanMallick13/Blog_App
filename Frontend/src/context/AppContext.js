@@ -7,21 +7,21 @@ export const AppContext = createContext();
 
 
 
-    function AppContextProvider({ children }) {
-        const [loadingB, setLoadingB] = useState(false);
-        const [loadingU, setLoadingU] = useState(false);
-        const [blogs, setBlogs] = useState([]);
-        const [users, setUsers] = useState([]);
-        const [userschangeTracker, setUCT] = useState(false);
-        const [isLoggedIn, setIsLoggedIn] = useState(false);
-        const [currentUser, setCurrentUser] = useState(null);
-        const [ApiValueChangeTracker, setAVCT] = useState(true);
-        const [showSignup, setshowSignUp] = useState(false);
-        const [name, setUsersname] = useState(null);
-        
-        const navigate = useNavigate();
-        
-        let signInSignUpClicked = false ; 
+function AppContextProvider({ children }) {
+    const [loadingB, setLoadingB] = useState(false);
+    const [loadingU, setLoadingU] = useState(false);
+    const [blogs, setBlogs] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [userschangeTracker, setUCT] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [ApiValueChangeTracker, setAVCT] = useState(true);
+    const [showSignup, setshowSignUp] = useState(false);
+    const [name, setUsersname] = useState(null);
+
+    const navigate = useNavigate();
+
+    let signInSignUpClicked = false;
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
     const urlUser = `${process.env.REACT_APP_BASE_URL}/allusers`;
@@ -58,7 +58,7 @@ export const AppContext = createContext();
 
             const value = localStorage.getItem('userName');
             if (value) {
-                userPresentHandler(value,data.users);
+                userPresentHandler(value, data.users);
             }
 
         }
@@ -73,11 +73,11 @@ export const AppContext = createContext();
 
     async function signinHandler(event) {
         event.preventDefault();
-        if(signInSignUpClicked){
-            return ; 
+        if (signInSignUpClicked) {
+            return;
         }
-        console.log(signInSignUpClicked) ; 
-        signInSignUpClicked = true ; 
+        console.log(signInSignUpClicked);
+        signInSignUpClicked = true;
         const formData = new FormData(event.target);
         const data = {
             userName: formData.get('username'),
@@ -117,12 +117,12 @@ export const AppContext = createContext();
 
     async function signUpHandler(event) {
 
-            event.preventDefault();
-            if(signInSignUpClicked){
-                return ; 
-            }
-            signInSignUpClicked = true ;
-            const formData = new FormData(event.target);
+        event.preventDefault();
+        if (signInSignUpClicked) {
+            return;
+        }
+        signInSignUpClicked = true;
+        const formData = new FormData(event.target);
 
         const data = {
             Name: formData.get('name'),
@@ -214,7 +214,7 @@ export const AppContext = createContext();
 
     }
 
-    function userPresentHandler(userName,userlist) {
+    function userPresentHandler(userName, userlist) {
         setCurrentUser(userName);
         // console.log("jjll",userlist);
         const Nameobj = userlist.filter(user => user.username === userName);
@@ -234,7 +234,7 @@ export const AppContext = createContext();
         toast.success('Logged Out');
         localStorage.clear();
         navigate('/');
-        signInSignUpClicked = false ; 
+        signInSignUpClicked = false;
     }
 
 
