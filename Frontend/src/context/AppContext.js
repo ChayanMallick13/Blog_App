@@ -16,6 +16,8 @@ function AppContextProvider({children}){
     const [currentUser , setCurrentUser] = useState('hh') ; 
     const [ApiValueChangeTracker,setAVCT] = useState(true);
     const [showSignup,setshowSignUp] = useState(false);
+
+    const signInSignUpClicked = false ; 
     
     const navigate = useNavigate() ; 
 
@@ -64,6 +66,11 @@ function AppContextProvider({children}){
 
     async function signinHandler(event) {
         event.preventDefault();
+        if(signInSignUpClicked){
+            return ; 
+        }
+        console.log(signInSignUpClicked) ; 
+        signInSignUpClicked = true ; 
         const formData = new FormData(event.target);
         const data = {
             userName: formData.get('username'),
@@ -103,6 +110,10 @@ function AppContextProvider({children}){
 
     async function signUpHandler(event) {
             event.preventDefault();
+            if(signInSignUpClicked){
+                return ; 
+            }
+            signInSignUpClicked = true ;
             const formData = new FormData(event.target);
 
             const data = {
@@ -207,6 +218,7 @@ function AppContextProvider({children}){
         toast.success('Logged Out');
         localStorage.clear();
         navigate('/');
+        signInSignUpClicked = false ; 
     }
 
     
