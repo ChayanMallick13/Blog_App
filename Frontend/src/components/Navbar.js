@@ -42,7 +42,7 @@ const Navbar = () => {
 
         {
           isLoggedIn ?
-            (<div className='w-[99%]'>welcome! <span className='italic font-extrabold md:text-xl'>{Name}</span></div>) :
+            (<div className='w-[99%] flex gap-2'><span className=' hidden sm:flex'>welcome! </span><span className='italic font-extrabold md:text-xl'>{Name}</span></div>) :
             (<div className=' text-white flex gap-5'>
 
               <button onClick={() => { navigate("/signin") }} className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">

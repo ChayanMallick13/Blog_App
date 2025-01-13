@@ -31,11 +31,11 @@ const CardsBlog = ({ blog }) => {
     return (
 
 
-        <div className='relative hover:scale-110 transition-all duration-500 group'>
+        <div className='relative hover:scale-110 transition-all duration-500 group mx-auto'>
 
-            <div onClick={() => naviagte(`/showPost/${blog._id}`)} className='flex flex-col gap-y-12 bg-white px-4 py-4 md:w-[380px] w-[373px] text-center rounded-md shadow-black
+            <div onClick={() => naviagte(`/showPost/${blog._id}`)} className='flex flex-col mx-auto  gap-y-12 bg-white px-4 py-4 md:w-[380px] w-[90%] max-w-[373px] text-center rounded-md shadow-black
             shadow-lg drop-shadow-lg card-back relative group border-slate-700
-            border-2 flex-wrap cursor-pointer h-[470px] justify-around 
+            border-2 flex-wrap cursor-pointer h-fit  min-h-[470px] justify-around 
             '>
 
                 <img alt='border' loading='lazy' src={border} className='absolute h-[90%] opacity-0 left-0 top-0

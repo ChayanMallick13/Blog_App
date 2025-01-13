@@ -26,10 +26,10 @@ const App = () => {
   }, [ApiValueChangeTracker, userschangeTracker]);
 
   return (
-    <div className="bg-slate-300 min-h-[100vh] overflow-x-hidden flex flex-col justify-between">
+    <div className="bg-slate-300 min-h-[100vh] overflow-x-hidden flex flex-col justify-between ">
 
 
-      <div className="h-full flex flex-col justify-between">
+      <div className="  h-full flex flex-col justify-between">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

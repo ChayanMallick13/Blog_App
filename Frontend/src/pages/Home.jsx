@@ -13,10 +13,6 @@ const Home = () => {
     return (
         <div className=' w-[96%] mx-auto mt-[2rem]'>
 
-            
-
-
-
             <div className='flex  gap-x-4'>
             <h1 className=' text-gray-700 text-2xl md:text-4xl mb-10 font-extrabold'>Latest:</h1>
 
@@ -35,7 +31,7 @@ const Home = () => {
                 ) :
                     (
                         blogs.length === 0 ? (<div className='text-3xl'>No posts Available</div>) :
-                            <div className='flex gap-9 flex-wrap w-full justify-center'>
+                            <div className='flex  gap-9 flex-wrap w-full justify-center'>
                                 {
 
                                     (blogs.slice(0,6).map((blog) => (
