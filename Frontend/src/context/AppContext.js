@@ -6,21 +6,22 @@ export const AppContext = createContext();
 
 
 
-function AppContextProvider({children}){
-    const [loadingB , setLoadingB] = useState(false) ;
-    const [loadingU , setLoadingU] = useState(false) ;
-    const [blogs , setBlogs] = useState([] ) ;
-    const [users , setUsers] = useState([] ) ;
-    const [userschangeTracker,setUCT] = useState(false);
-    const [isLoggedIn , setIsLoggedIn] = useState(false) ; 
-    const [currentUser , setCurrentUser] = useState('hh') ; 
-    const [ApiValueChangeTracker,setAVCT] = useState(true);
-    const [showSignup,setshowSignUp] = useState(false);
 
-    const signInSignUpClicked = false ; 
-    
-    const navigate = useNavigate() ; 
-
+    function AppContextProvider({ children }) {
+        const [loadingB, setLoadingB] = useState(false);
+        const [loadingU, setLoadingU] = useState(false);
+        const [blogs, setBlogs] = useState([]);
+        const [users, setUsers] = useState([]);
+        const [userschangeTracker, setUCT] = useState(false);
+        const [isLoggedIn, setIsLoggedIn] = useState(false);
+        const [currentUser, setCurrentUser] = useState(null);
+        const [ApiValueChangeTracker, setAVCT] = useState(true);
+        const [showSignup, setshowSignUp] = useState(false);
+        const [name, setUsersname] = useState(null);
+        
+        const navigate = useNavigate();
+        
+        let signInSignUpClicked = false ; 
 
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
     const urlUser = `${process.env.REACT_APP_BASE_URL}/allusers`;
