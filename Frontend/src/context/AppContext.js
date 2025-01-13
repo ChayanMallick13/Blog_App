@@ -107,7 +107,7 @@ function AppContextProvider({ children }) {
             localStorage.setItem('userName', data.userName);
             navigate("/");
             setCurrentUser(formData.get('username'));
-
+            userPresentHandler(data.userName,users);
         }
         else {
             toast.error(jsondata?.message);
