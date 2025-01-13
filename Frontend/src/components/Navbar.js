@@ -11,6 +11,8 @@ const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const category = ["poetry" , "literature" ,"story" ,"poems" , "others"] ; 
 
+
+
   // const [Name , setName] = useState("") ; 
   const { isLoggedIn, signOutHandler,name } = useContext(AppContext);
 
@@ -19,7 +21,11 @@ const Navbar = () => {
 
   function navClickHandler() {
 
-    setClicked(prev => !prev);
+    setClicked(true);
+    setTimeout(() => {
+      setClicked(false);
+    },3000);
+
 
 
   }
@@ -34,11 +40,11 @@ const Navbar = () => {
 
       </div>
 
-      <div className='flex justify-between items-center md:w-[350px]'>
+      <div className='flex items-center gap-x-2 sm:min-w-[260px] min-w-[130px] md:pr-0 pr-6'>
 
         {
           isLoggedIn ?
-            (<div className='w-[99%] flex gap-2'><span className=' hidden sm:flex'>welcome! </span><span className='italic font-extrabold md:text-xl'>{name}</span></div>) :
+            (<div className='w-[99%] flex gap-3'><span className=' hidden sm:flex'>welcome! </span><span className='italic font-extrabold md:text-xl'>{name}</span></div>) :
             (<div className=' text-white flex gap-5'>
 
               <button onClick={() => { navigate("/signin") }} className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
@@ -62,12 +68,11 @@ const Navbar = () => {
           clicked ?
             (
               <div className='flex gap-5 w-[20%] flex-col relative items-center '>
-                <IoReorderThree onClick={navClickHandler} className="text-2xl" />
+                <IoReorderThree onClick={navClickHandler} className="text-2xl"
+                 />
                 <div className='flex gap-5 absolute z-10 -right-8 top-7 flex-col bg-slate-700 mt-2 text-center pb-6
                 shadow-2xl underline font-bold w-[120px]'
-                  onClick={() => {
-                    setClicked(false);
-                  }}
+                  onMouseLeave={() => {setClicked(false)}}
                 >
 
                   <NavLink to={`category/${category[0]}`}>{category[0]}</NavLink>
@@ -88,7 +93,9 @@ const Navbar = () => {
                 </div>
               </div>
             ) :
-            (<div className='flex w-[20%] flex-col relative items-center'><IoReorderThree onClick={navClickHandler} className="text-2xl" /></div>)
+            (<div className='flex w-[20%] flex-col relative items-center'><IoReorderThree onClick={navClickHandler}
+            onMouseEnter={() =>{setClicked(true)}}
+             className="text-2xl" /></div>)
         }
       </div>
 
