@@ -264,7 +264,9 @@ function AppContextProvider({ children }) {
         userschangeTracker,
         userPresentHandler,
         signOutHandler,
-        name
+        name,
+        signInSignUpClicked ,
+        
     };
 
 
