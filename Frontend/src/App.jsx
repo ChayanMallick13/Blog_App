@@ -13,15 +13,12 @@ import Footer from "./components/Footer";
 import ShowPost from "./pages/ShowPost";
 
 const App = () => {
-  const { fetchblogs, fetchUser, ApiValueChangeTracker, userschangeTracker, userPresentHandler } = useContext(AppContext);
+  const { fetchblogs, fetchUser, ApiValueChangeTracker, userschangeTracker } = useContext(AppContext);
+  
 
   useEffect(() => {
     fetchblogs();
     fetchUser();
-    const value = localStorage.getItem('userName');
-    if (value) {
-      userPresentHandler(value);
-    }
     // eslint-disable-next-line
   }, [ApiValueChangeTracker, userschangeTracker]);
 

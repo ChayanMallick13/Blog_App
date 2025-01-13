@@ -34,6 +34,7 @@ const Home = () => {
                     (
                         blogs.length === 0 ? (<div className='text-3xl'>No posts Available</div>) :
                             <div className='flex  gap-10 flex-wrap w-full justify-center'>
+
                                 {
 
                                     (blogs.slice(0,6).map((blog) => (

@@ -21,47 +21,53 @@ function AppContextProvider({children}){
     
     const navigate = useNavigate() ; 
 
+
     const urlBlog = `${process.env.REACT_APP_BASE_URL}/get/posts`;
     const urlUser = `${process.env.REACT_APP_BASE_URL}/allusers`;
 
-    
+
 
     async function fetchblogs() {
-        setLoadingB(true) ; 
+        setLoadingB(true);
 
-        try{
-            const result = await fetch(urlBlog) ; 
-            const data = await result.json() ; 
+        try {
+            const result = await fetch(urlBlog);
+            const data = await result.json();
 
             // set blogs here after from fetching from api 
-            setBlogs(data.posts.reverse()) ; 
+            setBlogs(data.posts.reverse());
         }
-        
-        catch(err){
-            toast.error("Error In Fetch Blogs") ; 
-            setBlogs([]) ; 
+
+        catch (err) {
+            toast.error("Error In Fetch Blogs");
+            setBlogs([]);
         }
-        
-        setLoadingB(false) ; 
-        
+
+        setLoadingB(false);
+
     }
     async function fetchUser() {
-        setLoadingU(true) ; 
-        try{
-            const result = await fetch(urlUser) ; 
-            const data = await result.json() ; 
-            
+        setLoadingU(true);
+        try {
+            const result = await fetch(urlUser);
+            const data = await result.json();
+
             // set blogs here after from fetching from api 
-            setUsers(data.users) ; 
-            
+            setUsers(data.users);
+
+            const value = localStorage.getItem('userName');
+            if (value) {
+                userPresentHandler(value,data.users);
+            }
+
         }
 
-        catch(err){
-            toast.error("Error in Fetching users") ; 
-            setUsers([]) ; 
+        catch (err) {
+            toast.error("Error in Fetching users");
+            setUsers([]);
 
         }
-        setLoadingU(false) ; 
+        setLoadingU(false);
     }
 
     async function signinHandler(event) {
@@ -77,15 +83,15 @@ function AppContextProvider({children}){
             Password: formData.get('password'),
         };
 
-        const apires = await fetch(`${process.env.REACT_APP_BASE_URL}/auth`,{
-            method:"POST",
+        const apires = await fetch(`${process.env.REACT_APP_BASE_URL}/auth`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(
                 {
-                    userName:data.userName,
-                    Password:data.Password,
+                    userName: data.userName,
+                    Password: data.Password,
                 }
             )
         });
@@ -94,21 +100,22 @@ function AppContextProvider({children}){
 
         const matched = jsondata?.verified;
 
-        if(matched){
+        if (matched) {
             setIsLoggedIn(true);
-            toast.success("login success") ; 
-            localStorage.setItem('userName',data.userName);
+            toast.success("login success");
+            localStorage.setItem('userName', data.userName);
             navigate("/");
-            setCurrentUser(formData.get('username')) ; 
+            setCurrentUser(formData.get('username'));
 
         }
-        else{
-            toast.error(jsondata?.message) ;
+        else {
+            toast.error(jsondata?.message);
             setshowSignUp(true);
         }
     }
 
     async function signUpHandler(event) {
+
             event.preventDefault();
             if(signInSignUpClicked){
                 return ; 
@@ -116,103 +123,111 @@ function AppContextProvider({children}){
             signInSignUpClicked = true ;
             const formData = new FormData(event.target);
 
-            const data = {
-                Name: formData.get('name'),
-                userName: formData.get('username'),
-                Password: formData.get('password'),
-            };
-            try {
-                const apiurl = `${process.env.REACT_APP_BASE_URL}/newuser`;
-                const response = await fetch(apiurl, {
-                    method: 'POST',
-                    headers: {
+        const data = {
+            Name: formData.get('name'),
+            userName: formData.get('username'),
+            Password: formData.get('password'),
+        };
+        try {
+            const apiurl = `${process.env.REACT_APP_BASE_URL}/newuser`;
+            const response = await fetch(apiurl, {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-                });
-                const result = await response.json();
-                if(result?.status===1){
-                    toast.error(result?.message);
-                }
-                else if(result?.status===2){
-                    toast.success('New User Resgistered');
-                    setUCT(prev => !prev);
-                    setCurrentUser(data.userName) ; 
-                    localStorage.setItem('userName',data.userName);
-                    setIsLoggedIn(true);
-                    navigate("/") ; 
-                }
-
-
-            } 
-            catch (error) {
-                console.error('Error:', error);
-                toast.error('Error Occurred'); 
+            });
+            const result = await response.json();
+            if (result?.status === 1) {
+                toast.error(result?.message);
             }
+            else if (result?.status === 2) {
+                toast.success('New User Resgistered');
+                setUCT(prev => !prev);
+                setCurrentUser(data.userName);
+                localStorage.setItem('userName', data.userName);
+                setIsLoggedIn(true);
+                navigate("/");
+            }
+
+
+        }
+        catch (error) {
+            console.error('Error:', error);
+            toast.error('Error Occurred');
+        }
 
     }
     async function submitHandler(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = {
-                title: formData.get('title'),
-                body: formData.get('body'),
-                username: currentUser,
-                category: formData.get('category'),
-            };
-            try {
-                const apiurl = `${process.env.REACT_APP_BASE_URL}/create/post`;
-                const response = await fetch(apiurl, {
-                    method: 'POST',
-                    headers: {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = {
+            title: formData.get('title'),
+            body: formData.get('body'),
+            username: currentUser,
+            category: formData.get('category'),
+        };
+        try {
+            const apiurl = `${process.env.REACT_APP_BASE_URL}/create/post`;
+            const response = await fetch(apiurl, {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                setAVCT(prev => !prev);
-                toast.success('Post Added Successfully');
-
-            } 
-            catch (error) {
-                console.error('Error:', error);
-                toast.error("post not created "); 
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+            setAVCT(prev => !prev);
+            toast.success('Post Added Successfully');
 
-        navigate("/") ; 
+        }
+        catch (error) {
+            console.error('Error:', error);
+            toast.error("post not created ");
+        }
+
+        navigate("/");
 
     }
 
 
-    async function deletePost(postid){
-        try{
+    async function deletePost(postid) {
+        try {
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/deletepost/${postid}`);
             const data = await response.json();
-            if(data?.success){
+            if (data?.success) {
                 toast.success('Post Deleted');
                 setAVCT(prev => !prev);
             }
-            else{
+            else {
                 toast.error('Post Not deleetd');
             }
 
         }
-        catch(err){
+        catch (err) {
             toast.error('Problem in deleting Post');
         }
 
 
     }
 
-    function userPresentHandler(userName){
+    function userPresentHandler(userName,userlist) {
         setCurrentUser(userName);
+        // console.log("jjll",userlist);
+        const Nameobj = userlist.filter(user => user.username === userName);
+        // console.log(Nameobj);
+        // console.log("username",userName);
+        if (Nameobj.length > 0)
+            setUsersname(Nameobj[0].name);
+        else
+            return;
         setIsLoggedIn(true);
         navigate('/');
     }
 
-    function signOutHandler(){
+    function signOutHandler() {
         setIsLoggedIn(false);
         setCurrentUser(null);
         toast.success('Logged Out');
@@ -221,15 +236,15 @@ function AppContextProvider({children}){
         signInSignUpClicked = false ; 
     }
 
-    
+
 
 
     const value = {
         loadingB,
-        setLoadingB, 
+        setLoadingB,
         loadingU,
-        setLoadingU, 
-        blogs , 
+        setLoadingU,
+        blogs,
         setBlogs,
         fetchblogs,
         fetchUser,
@@ -247,14 +262,15 @@ function AppContextProvider({children}){
         showSignup,
         userschangeTracker,
         userPresentHandler,
-        signOutHandler
-    } ;
+        signOutHandler,
+        name
+    };
 
 
     return <AppContext.Provider value={value}>
-        {children} 
+        {children}
     </AppContext.Provider>
 
 }
 
-export default AppContextProvider ; 
+export default AppContextProvider; 

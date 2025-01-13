@@ -12,12 +12,8 @@ const Navbar = () => {
   const category = ["poetry" , "literature" ,"story" ,"poems" , "others"] ; 
 
   // const [Name , setName] = useState("") ; 
-  const { isLoggedIn, currentUser, users, signOutHandler } = useContext(AppContext);
+  const { isLoggedIn, signOutHandler,name } = useContext(AppContext);
 
-  let Name = "";
-  const Nameobj = users.filter(user => user.username === currentUser);
-  if (Nameobj.length > 0)
-    Name = Nameobj[0].name;
 
 
 
@@ -42,7 +38,7 @@ const Navbar = () => {
 
         {
           isLoggedIn ?
-            (<div className='w-[99%] flex gap-2'><span className=' hidden sm:flex'>welcome! </span><span className='italic font-extrabold md:text-xl'>{Name}</span></div>) :
+            (<div className='w-[99%] flex gap-2'><span className=' hidden sm:flex'>welcome! </span><span className='italic font-extrabold md:text-xl'>{name}</span></div>) :
             (<div className=' text-white flex gap-5'>
 
               <button onClick={() => { navigate("/signin") }} className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
