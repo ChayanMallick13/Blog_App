@@ -21,10 +21,7 @@ const Navbar = () => {
 
   function navClickHandler() {
 
-    setClicked(true);
-    setTimeout(() => {
-      setClicked(false);
-    },9000);
+    setClicked(prev => !prev);
 
 
 
