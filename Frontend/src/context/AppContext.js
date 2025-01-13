@@ -215,6 +215,7 @@ function AppContextProvider({ children }) {
     }
 
     function userPresentHandler(userName, userlist) {
+        signInSignUpClicked = true;
         setCurrentUser(userName);
         // console.log("jjll",userlist);
         const Nameobj = userlist.filter(user => user.username === userName);

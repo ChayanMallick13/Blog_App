@@ -40,7 +40,7 @@ const Navbar = () => {
 
       </div>
 
-      <div className='flex items-center gap-x-2 sm:min-w-[260px] min-w-[130px] md:pr-0 pr-6'>
+      <div className='flex items-center gap-x-2 md:min-w-[350px] sm:min-w-[300px] min-w-[210px] md:pr-0 pr-6'>
 
         {
           isLoggedIn ?
